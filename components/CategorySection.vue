@@ -2,6 +2,12 @@
 import {category} from "~/data/category";
 
 const brands = ref(category)
+console.log(brands.value,'__________________');
+setTimeout(()=>{
+  console.log(brands.value);
+  
+},5000)
+
 </script>
 <template>
   <div class="category-container">

@@ -1,12 +1,14 @@
 <script lang="ts" setup>
 import {useMainStore} from "#imports";
-import { computed } from "#imports";
+import { computed, onBeforeMount } from "#imports";
+
 const firstBlock = ref<HTMLElement | null>(null);
 const showSecond = ref(false)
 const secondBlock: any = ref(null)
 let timer: NodeJS.Timeout | null = null;
 const store = useMainStore()
 const currentLanguage = computed<string>(() => store.currentLanguage);
+const selectedLangText = computed<object>(()=> store.selectedLangText)
 
 const showSecondBlock = (method: string) => {  
   if (typeof method !== "object") {
@@ -24,10 +26,13 @@ const hideSecondBlock = () => {
 };
 const changeLanguage = () => {
   store.changeLanguage()
-
-  
 }
 
+
+onBeforeMount(()=>{
+  store.setLang()
+  store.setSelectedText(currentLanguage.value)
+})
 
 
 </script>

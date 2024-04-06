@@ -5,35 +5,50 @@ export interface MainStore {
     currency: Ref<string>
     getCurrencyData: () => void
     changeLanguage: () => void
+    setLang: () => void
+    setAllSiteText: (data:object) => void
+    setSelectedText: (lang:string) => void
     hiddenHeader: Ref<string>
     currentLanguage: Ref<string>
-    getLang: () => void
+    allSiteText: Ref<object>
+    selectedLangText: Ref<object>
 }
 
 export const useMainStore = defineStore('mainStore', () => {
     const currency: Ref<string> = ref('')
     const hiddenHeader: Ref<string> = ref('')
-    const currentLanguage: Ref<string> = ref('EN')
+    const currentLanguage: Ref<any> = ref('')
+    const allSiteText: Ref<object> = ref({})
+    const selectedLangText: Ref<object> = ref({})
 
     function getCurrencyData() {
         currency.value = Math.random().toFixed(2).toString()
     }
 
-    function changeLanguage () {        
+    function changeLanguage () {
         currentLanguage.value = currentLanguage.value === 'EN' ? 'JA' : 'EN'
+        localStorage.setItem("lang", currentLanguage.value)
     }
-
-    function getLang () {
-        console.log(currentLanguage.value);
-        
+    function setLang() {
+        currentLanguage.value = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'EN'
     }
-
+    function setAllSiteText(data:object) {
+        allSiteText.value = data
+        setSelectedText(currentLanguage.value)
+    }
+    function setSelectedText(lang:string) {
+        selectedLangText.value = allSiteText.value[`${lang.toLowerCase()}`]
+    }
     return {
         currency,
         getCurrencyData,
         changeLanguage,
-        getLang,
+        setLang,
+        setAllSiteText,
+        setSelectedText,
         hiddenHeader,
-        currentLanguage
+        currentLanguage,
+        allSiteText,
+        selectedLangText
     } as MainStore
 })
