@@ -1,23 +1,15 @@
 <script lang="ts" setup>
-import type {Ref} from "vue";
+import { useMainStore } from "#imports";
 
-const counterCars: Ref<number> = ref(0)
-
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
 
 </script>
 <template>
   <div class="counter-section-wrapper">
-    <div class="list-container">
-      <p>Cars</p>
-      <span>24 000</span>
-    </div>
-    <div class="list-container">
-      <p>Cars</p>
-      <span>15 000</span>
-    </div>
-    <div class="list-container">
-      <p>Deals</p>
-      <span>23 000</span>
+    <div class="list-container" v-for="(item, key) in selectedLangText['count_block']" :key="key">
+      <p>{{ item.title }}</p>
+      <span>{{ item.count }}</span>
     </div>
   </div>
 </template>

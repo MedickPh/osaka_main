@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useMainStore } from "#imports";
+
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
+</script>
 <template>
   <footer class="main-footer">
     <div class="container-footer">
@@ -103,13 +109,13 @@
       </nav>
       <div class="contact-footer-container">
         <div class="item-contact">
-          <p><span>Tel:</span> 06-6753-8300</p>
+          <p><span>Tel: </span>{{ selectedLangText['footer']['phone_number'] }}</p>
         </div>
         <div class="item-contact">
-          <p><span>E-Mail:</span> info@osakamotors.co.jp</p>
+          <p><span>E-Mail: </span>{{ selectedLangText['footer']['e-mail'] }}</p>
         </div>
         <div class="item-contact">
-          <p><span>Web:</span> osakamotors.co.jp</p>
+          <p><span>Web: </span>{{ selectedLangText['footer']['website_link'] }}</p>
         </div>
       </div>
     </div>

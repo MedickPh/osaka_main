@@ -28,6 +28,9 @@ export const useMainStore = defineStore('mainStore', () => {
     function changeLanguage () {
         currentLanguage.value = currentLanguage.value === 'EN' ? 'JA' : 'EN'
         localStorage.setItem("lang", currentLanguage.value)
+        setSelectedText(currentLanguage.value)
+
+        
     }
     function setLang() {
         currentLanguage.value = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'EN'

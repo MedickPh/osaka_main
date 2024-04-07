@@ -1,22 +1,21 @@
 <script lang="ts" setup>
 import {category} from "~/data/category";
+import { useMainStore } from "#imports";
 
-const brands = ref(category)
-console.log(brands.value,'__________________');
-setTimeout(()=>{
-  console.log(brands.value);
-  
-},5000)
+
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
+
 
 </script>
 <template>
-  <div class="category-container">
+  <div class="category-container" v-if="category.length >= 1">
     <div class="top-line-wrapper">
-      <h3 class="h3">Most <span>Popular Category</span></h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <h3 class="h3"><span>{{ selectedLangText['brand_block']['header'] }}</span></h3>
+      <p>{{ selectedLangText['brand_block']["text"] }}</p>
     </div>
     <div class="category-list">
-      <div v-for="(item, index) in brands" :key="index" class="item-category">
+      <div v-for="(item, index) in category" :key="index" class="item-category">
         <div class="name-brand">
           <span>{{ item }}</span>
         </div>

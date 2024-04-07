@@ -22,9 +22,7 @@ useHead({
     <Section>
       <NewsSection/>
     </Section>
-    <Section>
-      <BenefitsSection/>
-    </Section>
+    <BenefitsSection/>
     <Section>
       <MapsSection/>
     </Section>

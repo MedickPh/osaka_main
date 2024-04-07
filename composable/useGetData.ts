@@ -5,8 +5,8 @@ export function useGetData(router: any) {
 
     switch (restoreRouter) {
         case 'howtobuy':
-            return dataWiki.howtobuy
+            return dataWiki.value.howtobuy
         case 'importregulationsbycountry':
-            return dataWiki.importregulationsbycountry
+            return dataWiki.value.importregulationsbycountry
     }
 }

@@ -146,7 +146,20 @@ export const text = {
             "header": "EN",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
         },
-        "updates_blog": [],
+        "updates_blog": [
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+        ],
         "footer": {
             "phone_number": "06-6753-8300",
             "e-mail": "info@osakamotors.co.jp",
@@ -324,7 +337,7 @@ export const text = {
         },
         "main_block": {
             "name_company": "OsakaMotors",
-            "header": "Drive Your Dreams",
+            "header": "夢をドライブする",
             "text": "Unleash the Thrill of Winning at Auto Auctions!",
             "button": "Catalog",
             "background_image": ""
@@ -350,7 +363,20 @@ export const text = {
             "header": "JA",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
         },
-        "updates_blog": [],
+        "updates_blog": [
+            {
+                text: 'JAJAJAJAJ',
+                img: 'awdjalwdj',
+            },
+            {
+                text: 'JAJAJAJAJ',
+                img: 'awdjalwdj',
+            },
+            {
+                text: 'JAJAJAJAJ',
+                img: 'awdjalwdj',
+            },
+        ],
         "footer": {
             "phone_number": "japan",
             "e-mail": "info@osakamotors.co.jp",

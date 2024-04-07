@@ -6,20 +6,15 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import MobileHeader from "~/components/MobileHeader.vue";
 import {text} from "~/data/text"
-
+import { setText, setBrands } from '~/composable/setText' 
 
 const store = useMainStore();
-const currentLanguage = computed<string>(() => store.currentLanguage);
 
-const allSiteText = computed<object>(()=> store.allSiteText)
-const setAllText = (text:object) => {
+onBeforeMount(()=> {
+  store.setLang()
   store.setAllSiteText(text)
-}
-
-
-onMounted(()=> {
-  setAllText(text)
-
+  setText()
+  setBrands()
 })
 
 </script>

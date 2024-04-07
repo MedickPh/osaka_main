@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 import { useMainStore } from "#imports";
-import { setText } from '~/composable/setText' 
+
 const store = useMainStore()
 store.getCurrencyData()
 const getCurrency = computed(() => {
@@ -15,9 +15,8 @@ const updateTime = () => {
   requestAnimationFrame(updateTime);
 };
 onMounted(updateTime);
-onBeforeMount(()=>{
-  setText()
-})
+
+
 </script>
 <template>
   <div class="info-bar">

@@ -8,8 +8,8 @@ const popText = ref('')
 
 const showPopUp = (index:number) => {
   isShowPopUp.value = true;
-  popHeader.value = privilegeWork[index].title_full;
-  popText.value = privilegeWork[index].text
+  popHeader.value = privilegeWork.value[index].title_full;
+  popText.value = privilegeWork.value[index].text
 }
 
 const closePopupOnClickOutside = (event: MouseEvent) => {

@@ -1,15 +1,23 @@
+<script setup lang="ts">
+import { useMainStore } from "#imports";
+
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
+</script>
+
 <template>
   <div class="container-news">
     <div class="top-line-wrapper">
       <h3 class="h3">News <span>Updates</span> & Blog</h3>
     </div>
     <div class="news-wrapper">
-      <NewsItem size="middle"/>
-      <NewsItem size="middle"/>
-      <NewsItem size="middle"/>
-      <NewsItem size="middle"/>
-      <NewsItem size="big"/>
-
+      <NewsItem
+        v-for="(item, key) of selectedLangText['updates_blog']"
+        :key="key"
+        :text="item['text']"
+        :image="item['img']"
+        :size="key === selectedLangText['updates_blog'].length - 1 ? 'big' : 'middle'"
+      />
     </div>
   </div>
 </template>
@@ -48,5 +56,3 @@
   }
 }
 </style>
-<script setup lang="ts">
-</script>

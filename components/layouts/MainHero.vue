@@ -1,15 +1,19 @@
 <script lang="ts" setup>
+import { useMainStore } from "#imports";
+
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
 </script>
 <template>
   <div class="main-hero-section">
     <div class="text-composition">
       <div class="logo-name">
-        <p>OsakaMotors</p>
+        <p>{{ selectedLangText['main_block']['name_company'] }}</p>
       </div>
       <div class="text-content">
-        <h1 class="h1">Drive Your Dreams</h1>
-        <p>Unleash the Thrill of Winning at Auto Auctions!</p>
-        <button class="call-action-btn">Catalog</button>
+        <h1 class="h1">{{ selectedLangText['main_block']['header']  }}</h1>
+        <p>{{ selectedLangText['main_block']['text']  }}</p>
+        <button class="call-action-btn">{{ selectedLangText['main_block']['button']  }}</button>
       </div>
     </div>
     <div class="icon-down">

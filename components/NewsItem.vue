@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 const props = defineProps({
   size: String,
-  image: String
+  image: String,
+  text: String
 })
+
 </script>
 <template>
   <div class="news-item" :class="`${props.size}-size`">
@@ -11,7 +13,7 @@ const props = defineProps({
     </div>
     <div class="black-bg-handl"></div>
     <div class="description">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+      <p>{{props.text}}</p>
     </div>
   </div>
 </template>

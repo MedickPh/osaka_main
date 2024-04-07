@@ -1,1 +1,3 @@
-export const category = []
+import { ref } from 'vue';
+
+export const category = ref([])
