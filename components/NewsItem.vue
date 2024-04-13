@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+
 const props = defineProps({
   size: String,
   image: String,
@@ -9,7 +10,7 @@ const props = defineProps({
 <template>
   <div class="news-item" :class="`${props.size}-size`">
     <div class="image-wrapper">
-      <img src="/assets/item_1.jpeg" alt="image blog">
+      <img :src="`http://13.231.117.234/images/${props.image}`" alt="image blog">
     </div>
     <div class="black-bg-handl"></div>
     <div class="description">

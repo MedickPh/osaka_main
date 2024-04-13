@@ -3,11 +3,8 @@
 import { useMainStore } from "#imports";
 
 const store = useMainStore()
-store.getCurrencyData()
-const getCurrency = computed(() => {
-  return store.currency
-})
-const dollar = ref(getCurrency)
+const allSiteText = computed<object>(() => store.allSiteText);
+
 const japanTime = ref('');
 const updateTime = () => {
   const japanDate = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
@@ -22,7 +19,7 @@ onMounted(updateTime);
   <div class="info-bar">
     <div class="container-wrapper">
       <div class="info-dollar-container">
-        <span>USD/JPY - Dollar Yen 1$=¥{{ dollar }}</span>
+        <span>USD/JPY - Dollar Yen 1$=¥{{ allSiteText['currency'] }}</span>
       </div>
       <div class="current-time-container">
         <span>Japan Standard Time {{ japanTime  }}</span>

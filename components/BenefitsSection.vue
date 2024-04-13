@@ -44,7 +44,7 @@ onUnmounted(() => {
       :key="index"
       @click.stop="showPopUp(index)"
       >
-        <img :src="item.img_url" alt="">
+        <img :src="`http://13.231.117.234/images/${item.img_url}`" alt="">
         <p>{{ item.title_short }}</p>
       </div>
       <div class="popUp" v-if="isShowPopUp === true">
@@ -143,9 +143,11 @@ onUnmounted(() => {
       align-items: center;
       margin: 15px;
 
+
       img {
-        width: 100%;
-        max-width: 300px;
+        width: 300px;
+        height: 100%;
+        max-height: 300px;
         margin-bottom: 15px;
         border-radius: 15px;
       }

@@ -6,6 +6,9 @@ import { navigateTo } from "#app/composables/router";
 import { useCompareWikiRoute } from "~/composable/useCompareWikiRoute";
 import { getRulesForCurrentCountry } from "~/composable/getRulesForCurrentCountry"
 import { countries } from "~/data/countries";
+import Error from "../loaders/error"
+
+const store = useMainStore();
 
 
 
@@ -23,11 +26,16 @@ const isShowRulesBlock = ref(false);
 const title = ref(currentContent.value.title);
 const openHiddenWrapper = ref(false);
 
-const getRulesData = (countryCode: string) => {
-  textData.value = getRulesForCurrentCountry(countryCode);
+const getRulesData = async (countryCode: string) => {  
+  store.changeLoaderState(true)
+  textData.value = await getRulesForCurrentCountry(countryCode);  
   if (textData.value !== 'error') {
     isShowRulesBlock.value = true;
-  }
+    store.changeLoaderState(false)
+  }else {
+    store.changeLoaderState(false)
+    store.changeErrorState(true)
+  }  
 }
 
 watchEffect(() => {
@@ -94,6 +102,7 @@ watch(activeItemContent, () => {
     </span>
   </div>
 </template>
+
 <style lang="scss">
 @import url("../../scss/flags.css");
 

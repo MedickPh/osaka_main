@@ -3,15 +3,19 @@ import {type Ref, ref} from "vue";
 
 export interface MainStore {
     currency: Ref<string>
-    getCurrencyData: () => void
+
     changeLanguage: () => void
     setLang: () => void
     setAllSiteText: (data:object) => void
     setSelectedText: (lang:string) => void
+    changeLoaderState: (state:boolean) => void
+    changeErrorState: (state:boolean) => void
     hiddenHeader: Ref<string>
     currentLanguage: Ref<string>
     allSiteText: Ref<object>
     selectedLangText: Ref<object>
+    isShowLoader: Ref<boolean>
+    isShowError: Ref<boolean>
 }
 
 export const useMainStore = defineStore('mainStore', () => {
@@ -20,38 +24,50 @@ export const useMainStore = defineStore('mainStore', () => {
     const currentLanguage: Ref<any> = ref('')
     const allSiteText: Ref<object> = ref({})
     const selectedLangText: Ref<object> = ref({})
+    const isShowLoader: Ref<boolean> = ref(true)
+    const isShowError: Ref<boolean> = ref(false)
 
-    function getCurrencyData() {
-        currency.value = Math.random().toFixed(2).toString()
-    }
+
 
     function changeLanguage () {
         currentLanguage.value = currentLanguage.value === 'EN' ? 'JA' : 'EN'
         localStorage.setItem("lang", currentLanguage.value)
-        setSelectedText(currentLanguage.value)
-
-        
+        setSelectedText(currentLanguage.value)        
     }
+
     function setLang() {
         currentLanguage.value = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'EN'
     }
+
     function setAllSiteText(data:object) {
         allSiteText.value = data
         setSelectedText(currentLanguage.value)
     }
+
     function setSelectedText(lang:string) {
-        selectedLangText.value = allSiteText.value[`${lang.toLowerCase()}`]
+        selectedLangText.value = allSiteText.value[`${lang.toLowerCase()}`]        
+    }
+
+    function changeLoaderState(state:boolean) {
+        isShowLoader.value = state
+    }
+
+    function changeErrorState(state:boolean) {
+        isShowError.value = state
     }
     return {
         currency,
-        getCurrencyData,
         changeLanguage,
         setLang,
         setAllSiteText,
         setSelectedText,
+        changeLoaderState,
+        changeErrorState,
         hiddenHeader,
         currentLanguage,
         allSiteText,
-        selectedLangText
+        selectedLangText,
+        isShowLoader,
+        isShowError
     } as MainStore
 })

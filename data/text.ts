@@ -159,6 +159,35 @@ export const text = {
                 "text": 'enenenenenne',
                 "img": 'awdjalwdj',
             },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            {
+                "text": 'enenenenenne',
+                "img": 'awdjalwdj',
+            },
+            
         ],
         "footer": {
             "phone_number": "06-6753-8300",

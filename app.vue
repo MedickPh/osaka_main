@@ -1,30 +1,77 @@
 <script lang="ts" setup>
-import {useMainStore, ref} from "#imports";
+import { useMainStore, ref, computed } from "#imports";
 import './scss/main.scss';
+import axios from 'axios';
 import InfoBar from "./components/InfoBar.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import MobileHeader from "~/components/MobileHeader.vue";
-import {text} from "~/data/text"
-import { setText, setBrands } from '~/composable/setText' 
+import Preloader from "./components/loaders/preloader"
+import Error from "./components/loaders/error"
+import { text } from "./data/text.ts"
 
+import { setText, setBrands } from '~/composable/setText'
 const store = useMainStore();
 
-onBeforeMount(()=> {
-  store.setLang()
-  store.setAllSiteText(text)
-  setText()
-  setBrands()
-})
+const isShowLoader = computed<boolean>(() => store.isShowLoader);
+const isShowError = computed<boolean>(() => store.isShowError);
+const isError = ref()
+
+
+
+
+const getText = async () => {
+  try {
+    const response = await axios.get('http://13.231.117.234/api/main_landing', {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    console.log(response.data);
+    
+    return response.data
+  } catch (error) {
+    console.error(error);
+    throw error;
+
+  }
+}
+
+const start = async () => {
+  try {
+    store.setLang()
+    const res = await getText()
+    store.setAllSiteText(res)
+    setText()
+    setBrands()
+  } catch (error) {
+    throw error
+  }
+}
+
+onBeforeMount(async () => {
+  try {
+    await start()
+    isError.value = false
+    store.changeLoaderState(false)
+  } catch (error) {
+    store.changeLoaderState(false)
+    store.changeErrorState(true)
+    isError.value = isShowError.value
+  }
+});
+
 
 </script>
 <template>
   <div>
-    <InfoBar/>
-    <Header/>
-    <MobileHeader/>
-    <HeaderMobile/>
-    <RouterView/>
-    <Footer/>
+    <Preloader v-if="isShowLoader === true" />
+    <Error v-if="isShowError === true" />
+    <InfoBar v-if="isError === false" />
+    <Header v-if="isError === false" />
+    <MobileHeader v-if="isError === false" />
+    <HeaderMobile v-if="isError === false" />
+    <RouterView v-if="isError === false" />
+    <Footer v-if="isError === false" />
   </div>
 </template>

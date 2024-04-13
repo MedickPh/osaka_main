@@ -3,6 +3,9 @@ import { useMainStore } from "#imports";
 
 const store = useMainStore();
 const selectedLangText = computed<object>(() => store.selectedLangText);
+const currentLanguage = computed<object>(() => store.currentLanguage);
+// console.log(selectedLangText.value['updates_blog'][0]['title'][`title_${currentLanguage.value.toLowerCase()}`]);
+
 </script>
 
 <template>
@@ -11,13 +14,12 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
       <h3 class="h3">News <span>Updates</span> & Blog</h3>
     </div>
     <div class="news-wrapper">
-      <NewsItem
-        v-for="(item, key) of selectedLangText['updates_blog']"
-        :key="key"
-        :text="item['text']"
-        :image="item['img']"
-        :size="key === selectedLangText['updates_blog'].length - 1 ? 'big' : 'middle'"
-      />
+      <template v-for="(item, key) in selectedLangText['updates_blog']" :key="key">
+        <NewsItem v-if="item !== null" 
+          :text="item['title'][`title_${currentLanguage.toLowerCase()}`]"
+          :image="item['article_img']['blog_pic']"
+          :size="key === selectedLangText['updates_blog'].length - 1 ? 'big' : 'middle'" />
+      </template>
     </div>
   </div>
 </template>
