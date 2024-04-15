@@ -8,8 +8,8 @@ const popText = ref('')
 
 const showPopUp = (index:number) => {
   isShowPopUp.value = true;
-  popHeader.value = privilegeWork.value[index].title_full;
-  popText.value = privilegeWork.value[index].text
+  popHeader.value = privilegeWork.value['blocks'][index].title_full;
+  popText.value = privilegeWork.value['blocks'][index].text
 }
 
 const closePopupOnClickOutside = (event: MouseEvent) => {
@@ -31,16 +31,15 @@ onUnmounted(() => {
     <div class="bg-review-place"></div>
     <div class="top-line-container">
       <div class="content-title">
-        <h2 class="h2">Privilege Working With <span>OsakaMotors</span></h2>
+        <h2 class="h2">{{ privilegeWork['title'] }}</h2>
       </div>
       <div class="subtitle-wrapper">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Sed lobortis orci elementum egestas lobortis.</p>
+        <p>{{ privilegeWork['text'] }}</p>
       </div>
     </div>
     <div class="benefits">
       <div class="benefit" 
-      v-for="(item, index) in privilegeWork" 
+      v-for="(item, index) in privilegeWork['blocks']" 
       :key="index"
       @click.stop="showPopUp(index)"
       >

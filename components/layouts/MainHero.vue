@@ -3,10 +3,7 @@ import { useMainStore } from "#imports";
 
 const store = useMainStore();
 const selectedLangText = computed<object>(() => store.selectedLangText);
-console.log(selectedLangText.value['main_block']);
-setTimeout(() => {
-  console.log(selectedLangText.value['main_block']);
-}, 500);
+
 </script>
 <template>
   <div class="main-hero-section">

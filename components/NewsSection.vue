@@ -4,17 +4,17 @@ import { useMainStore } from "#imports";
 const store = useMainStore();
 const selectedLangText = computed<object>(() => store.selectedLangText);
 const currentLanguage = computed<object>(() => store.currentLanguage);
-// console.log(selectedLangText.value['updates_blog'][0]['title'][`title_${currentLanguage.value.toLowerCase()}`]);
+
 
 </script>
 
 <template>
   <div class="container-news">
     <div class="top-line-wrapper">
-      <h3 class="h3">News <span>Updates</span> & Blog</h3>
+      <h3 class="h3">{{ selectedLangText['updates_blog']['title'] }}</h3>
     </div>
     <div class="news-wrapper">
-      <template v-for="(item, key) in selectedLangText['updates_blog']" :key="key">
+      <template v-for="(item, key) in selectedLangText['updates_blog']['blogs']" :key="key">
         <NewsItem v-if="item !== null" 
           :text="item['title'][`title_${currentLanguage.toLowerCase()}`]"
           :image="item['article_img']['blog_pic']"
