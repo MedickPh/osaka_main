@@ -38,6 +38,7 @@
 h1 {
 
     font-size: 5rem;
+    margin-bottom: 100px;
 }
 p {
     padding: 5px;
