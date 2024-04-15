@@ -21,7 +21,7 @@ const isError = ref()
 
 const getText = async () => {
   try {
-    const response = await axios.get('https://13.231.117.234/api/main_landing', {
+    const response = await axios.get('http://13.231.117.234/api/main_landing', {
       headers: {
         "Content-Type": "application/json",
       },
