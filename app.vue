@@ -8,7 +8,6 @@ import Footer from "./components/Footer.vue";
 import MobileHeader from "~/components/MobileHeader.vue";
 import Preloader from "./components/loaders/preloader"
 import Error from "./components/loaders/error"
-import { text } from "./data/text.ts"
 
 import { setText, setBrands } from '~/composable/setText'
 const store = useMainStore();
@@ -22,7 +21,7 @@ const isError = ref()
 
 const getText = async () => {
   try {
-    const response = await axios.get('http://13.231.117.234/api/main_landing', {
+    const response = await axios.get('https://13.231.117.234/api/main_landing', {
       headers: {
         "Content-Type": "application/json",
       },
