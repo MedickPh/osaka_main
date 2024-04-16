@@ -7,27 +7,27 @@ export const headerBar = ref({
         ourProcess: {text: "", link: "/howtobuy/ourproces"}
     },
     aboutAuctions: {
-        auctionHouses: {text: "", link: ""},
-        auctionCalendar: {text: "", link: ""},
-        gradingSystem: {text: "", link: ""},
-        rulesNegotiation: {text: "", link: ""},
-        ourProcess: {text: "s", link: ""}
+        auctionHouses: {text: "", link: "/aboutactions/auctionhouses"},
+        auctionCalendar: {text: "", link: "/aboutactions/auctioncalendar"},
+        gradingSystem: {text: "", link: "/aboutactions/gradingsystem"},
+        rulesNegotiation: {text: "", link: "/aboutactions/rulesnegotiation"},
+        ourProcess: {text: "", link: "/aboutactions/ourprocess"}
     },
     importRegulationsByCountry: {
         importRegulations: {text: "", link: "/importregulationsbycountry/countrylist"}
     },
     newsBlog: {
-        latestNews: {text: "", link: ""},
-        blog: {text: "", link: ""},
-        importRegulations: {text: "", link: ""},
-        userReviews: {text: "", link: ""},
-        termsConditions: {text: "", link: ""}
+        latestNews: {text: "", link: "/newsblogs/latestnews"},
+        blog: {text: "", link: "/newsblogs/blog"},
+        importRegulations: {text: "", link: "/newsblogs/importregulations"},
+        userReviews: {text: "", link: "/newsblogs/userreviews"},
+        termsConditions: {text: "", link: "/newsblogs/termsandconditions"}
     },
     faq: {
-        aboutUs: {text: "", link: ""},
-        bankInformation: {text: "", link: ""},
-        contactInformation: {text: "", link: ""},
-        location: {text: "", link: ""},
-        inquiryForm: {text: "", link: ""}
+        aboutUs: {text: "", link: "/faqs/aboutus"},
+        bankInformation: {text: "", link: "/faqs/bankinformation"},
+        contactInformation: {text: "", link: "/faqs/contactinfomration"},
+        location: {text: "", link: "/faqs/location"},
+        inquiryForm: {text: "", link: "/faqs/inquiryform"}
     }
 })

@@ -86,7 +86,7 @@ watch(activeItemContent, () => {
         <div class="country_list" v-if="isShowRulesBlock === false">
           <div class="country" v-for="(item, index) in countries" :key="index" @click="getRulesData(index)">
             <div class="flag" :class="`flag-${index.toLocaleLowerCase()}`"></div>
-            <p class="">{{ item }}</p>
+            <p>{{ item }}</p>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ watch(activeItemContent, () => {
         <div class="title-wrapper">
           <h1 class="h1">{{ currentContent.title }}</h1>
         </div>
-        <p>{{ currentContent.text }}</p>
+        <p v-html="currentContent.text"></p>
       </div>
     </span>
   </div>
