@@ -2,7 +2,7 @@ import { ref } from 'vue';
 
 export const dataWiki = ref({
     howtobuy: {
-        menu: ['From Auction', 'Domestic Stock', 'Import Regulations', 'Our Process'],
+        menu: [],
         content: {
             fromauction: {
                 title: "From Auction",
@@ -22,7 +22,7 @@ export const dataWiki = ref({
         }
     },
     aboutactions: {
-        menu: ['Auction Houses', 'Auction Calendar', 'Grading System', 'Rules/Negotiation', 'Our Process'],
+        menu: [],
         content: {
             auctionhouses: {
                 title: "",
@@ -47,16 +47,16 @@ export const dataWiki = ref({
         }
     },
     importregulationsbycountry: {
-        menu: ['Country list'],
+        menu: [],
         content: {
             countrylist: {
-                title: "Choose country",
+                title: "",
                 
             }
         }
     },
     newsblogs: {
-        menu: ['Latest News', 'Blog', 'Import Regulations', 'User Reviews', 'Terms & Conditions'],
+        menu: [],
         content: {
             latestnews: {
                 title: "",
@@ -81,7 +81,7 @@ export const dataWiki = ref({
         }
     },
     faqs: {
-        menu: ['About Us', 'Bank Information', 'Contact Infomration', 'Location', 'Inquiry Form'],
+        menu: [],
         content: {
             aboutus: {
                 title: "",

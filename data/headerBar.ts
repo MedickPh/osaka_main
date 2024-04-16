@@ -1,9 +1,10 @@
-export const headerBar = {
+import { ref } from 'vue';
+export const headerBar = ref({
     howToBay: {
-        fromAction: {text: "From Auction", link: "/howtobuy/fromauction"},
-        domesticStock: {text: "Domestic Stock", link: "/howtobuy/domesticstock"},
-        importRegulations: {text: "Import Regulations", link: "/howtobuy/importregulations"},
-        ourProcess: {text: "Our Process", link: "/howtobuy/ourproces"}
+        fromAction: {text: "From Auction1", link: "/howtobuy/fromauction"},
+        domesticStock: {text: "Domestic Stock2", link: "/howtobuy/domesticstock"},
+        importRegulations: {text: "Import Regulations3", link: "/howtobuy/importregulations"},
+        ourProcess: {text: "Our Process4", link: "/howtobuy/ourproces"}
     },
     aboutAuctions: {
         auctionHouses: {text: "Auction Houses", link: ""},
@@ -29,4 +30,4 @@ export const headerBar = {
         location: {text: "Location", link: ""},
         inquiryForm: {text: "Inquiry Form", link: ""}
     }
-}
+})

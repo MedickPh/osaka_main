@@ -6,7 +6,6 @@ import { navigateTo } from "#app/composables/router";
 import { useCompareWikiRoute } from "~/composable/useCompareWikiRoute";
 import { getRulesForCurrentCountry } from "~/composable/getRulesForCurrentCountry"
 import { countries } from "~/data/countries";
-import Error from "../loaders/error"
 
 const store = useMainStore();
 
@@ -16,6 +15,7 @@ const router = useRouter();
 const mainData = ref(useGetData(router.currentRoute.value));
 const activeItemContent = ref(router.currentRoute.value.fullPath.split('/')[2]);
 const activeItemComponent = ref(router.currentRoute.value.fullPath.split('/')[1]);
+
 
 const currentContent = ref(useHandlerWiki(activeItemContent.value, activeItemComponent.value));
 
@@ -45,7 +45,7 @@ watchEffect(() => {
 })
 
 function changeContent(item: string) {
-  navigateTo(`${useCompareWikiRoute(item)}`)
+  navigateTo(`${useCompareWikiRoute(item,mainData)}`)
   isShowRulesBlock.value = false;
 }
 

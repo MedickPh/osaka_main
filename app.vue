@@ -6,10 +6,11 @@ import InfoBar from "./components/InfoBar.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import MobileHeader from "~/components/MobileHeader.vue";
-import Preloader from "./components/loaders/preloader"
-import Error from "./components/loaders/error"
+import Preloader from "./components/loaders/preloader.vue"
+import Error from "./components/loaders/error.vue"
 
-import { setText, setBrands } from '~/composable/setText'
+import { setText } from '~/composable/setText'
+import { setBrands } from '~/composable/setBrands'
 const store = useMainStore();
 
 const isShowLoader = computed<boolean>(() => store.isShowLoader);
@@ -40,10 +41,13 @@ const start = async () => {
   try {
     store.setLang()
     const res = await getText()
+    ;
+    
     store.setAllSiteText(res)
     setText()
     setBrands()
   } catch (error) {
+    console.error(error)
     throw error
   }
 }
@@ -54,6 +58,8 @@ onBeforeMount(async () => {
     isError.value = false
     store.changeLoaderState(false)
   } catch (error) {
+    console.log(error);
+    
     store.changeLoaderState(false)
     store.changeErrorState(true)
     isError.value = isShowError.value

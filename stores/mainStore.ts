@@ -4,7 +4,7 @@ import {type Ref, ref} from "vue";
 export interface MainStore {
     currency: Ref<string>
 
-    changeLanguage: () => void
+    changeLanguage: (lang:string) => void
     setLang: () => void
     setAllSiteText: (data:object) => void
     setSelectedText: (lang:string) => void
@@ -29,8 +29,8 @@ export const useMainStore = defineStore('mainStore', () => {
 
 
 
-    function changeLanguage () {
-        currentLanguage.value = currentLanguage.value === 'EN' ? 'JA' : 'EN'
+    function changeLanguage (lang:string) {
+        currentLanguage.value = lang
         localStorage.setItem("lang", currentLanguage.value)
         setSelectedText(currentLanguage.value)        
     }

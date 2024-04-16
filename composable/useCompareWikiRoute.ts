@@ -1,20 +1,9 @@
-export function useCompareWikiRoute(title: string) {
-    switch (title) {
-        case "From auction" : {
-            return 'fromauction'
-        }
-        case 'Domestic Stock' : {
-            return "domesticstock"
-        }
-        case "Import Regulations": {
-            return 'importregulations'
-        }
-        case "Our Process":
-            return 'ourproces'
-        case "Country list":
-            return 'countrylist'
-        default: {
-            return 'fromauction'
+import {dataWiki} from "~/data/dataWiki";
+
+export function useCompareWikiRoute(title: string, mainData:object) {
+    for (const key in mainData.value['content']) {
+        if (mainData.value['content'][key]['title'] === title) {
+            return key
         }
     }
 }
