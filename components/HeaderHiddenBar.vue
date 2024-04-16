@@ -8,6 +8,7 @@ const store = useMainStore()
 const title: any = ref('')
 const getDataHidden = computed(() => {
   title.value = useRestoreTitleHeader(store.hiddenHeader)
+
   
   return store.hiddenHeader
 })

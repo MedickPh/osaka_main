@@ -4,6 +4,7 @@ import { useMainStore } from "#imports";
 
 const store = useMainStore()
 const allSiteText = computed<object>(() => store.allSiteText);
+const currentLanguage = computed<string>(() => store.currentLanguage);
 
 const japanTime = ref('');
 const updateTime = () => {
@@ -12,6 +13,7 @@ const updateTime = () => {
   requestAnimationFrame(updateTime);
 };
 onMounted(updateTime);
+console.log(currentLanguage.value);
 
 
 </script>
@@ -22,7 +24,8 @@ onMounted(updateTime);
         <span>USD/JPY - 1$ = {{ allSiteText['currency'] }}¥</span>
       </div>
       <div class="current-time-container">
-        <span>Japan Standard Time {{ japanTime  }}</span>
+        <span v-if="currentLanguage=== 'En'">Japan Standard Time {{ japanTime  }}</span>
+        <span v-else>日本時間 {{ japanTime  }}</span>
       </div>
     </div>
   </div>

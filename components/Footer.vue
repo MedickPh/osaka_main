@@ -83,27 +83,27 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
       </div>
       <nav class="footer-nav">
         <div class="link-container">
-          <a href="#">How to buy</a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['first_element'] }}</a>
 
         </div>
         <div class="link-container">
-          <a href="#">About Actions</a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['second_element'] }}</a>
 
         </div>
         <div class="link-container">
-          <a href="#">Import Regulations </a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['third_block'] }}</a>
 
         </div>
         <div class="link-container">
-          <a href="#">News/Blog </a>
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['fourth_block'] }}</a>
 
         </div>
         <div class="link-container">
-          <a href="#">Faqs</a>
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['fifth_block'] }}</a>
 
         </div>
         <div class="link-container">
-          <a href="#">Contact</a>
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['sixth_block'] }}</a>
 
         </div>
       </nav>

@@ -9,6 +9,7 @@ const secondBlock: any = ref(null)
 let timer: NodeJS.Timeout | null = null;
 const store = useMainStore()
 const currentLanguage = computed<string>(() => store.currentLanguage);
+const selectedLangText = computed<object>(() => store.selectedLangText);
 const options = ['En', 'Ja'];
 const isOpen = ref(false);
 
@@ -19,14 +20,14 @@ const toggleDropdown = () => {
 const selectOption = (event: Event, option: string) => {
   store.changeLanguage(option.toLowerCase())
   setText()
-  currentLanguage.value = option
+  store.changeLanguage(option)
   isOpen.value = !isOpen.value
   event.stopPropagation();
 };
 
 const showSecondBlock = (method: string) => {
   if (typeof method !== "object") {
-    // console.log(method);
+
     store.hiddenHeader = method
   }
   clearTimeout(timer as NodeJS.Timeout);
@@ -39,9 +40,7 @@ const hideSecondBlock = () => {
   }, 500);
 };
 
-onBeforeMount(()=>{
-  selectedOption.value = lang[0].toUpperCase() + lang.slice(1);
-})
+
 
 
 
@@ -102,7 +101,7 @@ onBeforeMount(()=>{
       <nav class="main-nav-wrapper">
         <div class="link-container" ref="firstBlock" @mouseenter="showSecondBlock('howToBay')"
           @mouseleave="hideSecondBlock">
-          <a href="#">How to buy</a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['first_element'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
@@ -110,7 +109,7 @@ onBeforeMount(()=>{
           </svg>
         </div>
         <div class="link-container" @mouseenter="showSecondBlock('aboutAuctions')" @mouseleave="hideSecondBlock">
-          <a href="#">About Actions</a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['second_element'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
@@ -119,7 +118,7 @@ onBeforeMount(()=>{
         </div>
         <div class="link-container" @mouseenter="showSecondBlock('importRegulationsByCountry')"
           @mouseleave="hideSecondBlock">
-          <a href="#">Import Regulations</a>
+          <a href="#">{{ selectedLangText['header']['navigation_menu']['third_block'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
@@ -127,7 +126,7 @@ onBeforeMount(()=>{
           </svg>
         </div>
         <div class="link-container" @mouseenter="showSecondBlock('newsBlog')" @mouseleave="hideSecondBlock">
-          <a href="#">News/Blog </a>
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['fourth_block'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
@@ -135,15 +134,15 @@ onBeforeMount(()=>{
           </svg>
         </div>
         <div class="link-container" @mouseenter="showSecondBlock('faq')" @mouseleave="hideSecondBlock">
-          <a href="#">Faqs</a>
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['fifth_block'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
               fill="#989898" />
           </svg>
         </div>
-        <div class="link-container">
-          <a href="#">Contact</a>
+        <div class="link-container" >
+          <a href="#">{{  selectedLangText['header']['navigation_menu']['sixth_block'] }}</a>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
             <path
               d="M10.2929 9.70711C10.6834 10.0976 11.3166 10.0976 11.7071 9.70711L18.0711 3.34315C18.4616 2.95262 18.4616 2.31946 18.0711 1.92893C17.6805 1.53841 17.0474 1.53841 16.6569 1.92893L11 7.58579L5.34315 1.92893C4.95262 1.53841 4.31946 1.53841 3.92893 1.92893C3.53841 2.31946 3.53841 2.95262 3.92893 3.34315L10.2929 9.70711ZM10 8L10 9L12 9L12 8L10 8Z"
@@ -167,7 +166,7 @@ onBeforeMount(()=>{
           </svg>
           
           <div class="custom-select" @click="toggleDropdown()">
-            <div class="selected-item">{{ selectedOption }}</div>
+            <div class="selected-item">{{ currentLanguage }}</div>
             <div class="dropdown" :class="{ open: isOpen }">
               <div v-for="option in options" :key="option" class="dropdown-item" @click="selectOption($event, option)">
                 {{ option }}
@@ -231,6 +230,7 @@ onBeforeMount(()=>{
           position: relative;
           display: inline-block;
           cursor: pointer;
+          width: 45px;
 
           .selected-item {
             padding: 5px 10px;

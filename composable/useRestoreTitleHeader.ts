@@ -1,17 +1,21 @@
+import { useMainStore } from "#imports";
+
 export function useRestoreTitleHeader(key: string) {
 // title in dropdown menu list
 
-    
+const store = useMainStore();
+const selectedLangText = computed<object>(() => store.selectedLangText);
+
     switch (key) {
         case "howToBay":
-            return "How to buy"
+            return selectedLangText.value['header']['navigation_menu']['first_element']
         case "aboutAuctions":
-            return 'About Actions';
+            return selectedLangText.value['header']['navigation_menu']['second_element']
         case "importRegulationsByCountry":
-            return 'Import Regulations';
+            return selectedLangText.value['header']['navigation_menu']['third_block']
         case "newsBlog":
-            return 'News/Blog';
+            return selectedLangText.value['header']['navigation_menu']['fourth_block']
         case "faq":
-            return 'Faqs';
+            return selectedLangText.value['header']['navigation_menu']['fifth_block']
     }
 }
