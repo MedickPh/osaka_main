@@ -48,8 +48,7 @@ import { computed } from "#imports";
 const store = useMainStore()
 const currentLanguage = computed(() => store.currentLanguage.toLowerCase());
 const { textData } = defineProps(["textData"])
-console.log(textData);
-console.log(currentLanguage.value);
+
 
 </script>
 

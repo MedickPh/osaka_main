@@ -1,6 +1,26 @@
 <script lang="ts" setup>
-import {headerBar} from "~/data/headerBar";
-import {useRestoreTitleHeader} from "~/composable/useRestoreTitleHeader";
+import { ref, useMainStore } from "#imports";
+import { headerBar } from "~/data/headerBar";
+import { useRestoreTitleHeader } from "~/composable/useRestoreTitleHeader";
+import { setText } from "~/composable/setText";
+
+const store = useMainStore()
+const selectedLangText = computed<object>(() => store.selectedLangText);
+const currentLanguage = computed<string>(() => store.currentLanguage);
+const options = ['En', 'Ja'];
+const isOpen = ref(false);
+
+const toggleDropdown = () => {
+  isOpen.value = !isOpen.value;
+};
+
+const selectOption = (event: Event, option: string) => {
+  store.changeLanguage(option.toLowerCase())
+  setText()
+  store.changeLanguage(option)
+  isOpen.value = !isOpen.value
+  event.stopPropagation();
+};
 
 const openSecondMenu = ref(false)
 const currentSecondMenu = ref({})
@@ -17,7 +37,7 @@ function handlerSecondMenu(active: string) {
   }
   openSecondMenu.value = true
   secondTitle.value = useRestoreTitleHeader(active)
-  currentSecondMenu.value = headerBar[active]
+  currentSecondMenu.value = headerBar.value[active]
 }
 
 watch(secondTitle, () => {
@@ -121,12 +141,20 @@ function closeFirstMenu() {
       </div>
       <nav class="main-navbar-mobile">
         <ul v-if="secondTitle === '' && !openSecondMenu">
-          <li @click="handlerSecondMenu('howToBay')">How to buy</li>
-          <li @click="handlerSecondMenu('aboutAuctions')">About Auctions</li>
-          <li @click="handlerSecondMenu('importRegulationsByCountry')">Import Regulations</li>
-          <li @click="handlerSecondMenu('newsBlog')">News/Blog</li>
-          <li @click="handlerSecondMenu('faq')">Faqs</li>
-          <li>Contact</li>
+          <li @click="handlerSecondMenu('howToBay')">{{ selectedLangText['header']['navigation_menu']['first_element']}}</li>
+          <li @click="handlerSecondMenu('aboutAuctions')">{{ selectedLangText['header']['navigation_menu']['second_element'] }}</li>
+          <li @click="handlerSecondMenu('importRegulationsByCountry')">{{ selectedLangText['header']['navigation_menu']['third_block'] }} </li>
+          <li @click="handlerSecondMenu('newsBlog')">{{ selectedLangText['header']['navigation_menu']['fourth_block'] }}</li>
+          <li @click="handlerSecondMenu('faq')">{{ selectedLangText['header']['navigation_menu']['fifth_block'] }}</li>
+          <li>{{ selectedLangText['header']['navigation_menu']['sixth_block'] }}</li>
+          <div class="custom-select" @click="toggleDropdown()">
+          <div class="selected-item">{{ currentLanguage }}</div>
+          <div class="dropdown" :class="{ open: isOpen }">
+            <div v-for="option in options" :key="option" class="dropdown-item" @click="selectOption($event, option)">
+              {{ option }}
+            </div>
+          </div>
+        </div>
         </ul>
         <ul v-else>
           <li v-for="item in currentSecondMenu">{{ item.text }}</li>
@@ -217,6 +245,48 @@ function closeFirstMenu() {
         li {
           margin-bottom: 20px;
         }
+
+        .custom-select {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        width: 45px;
+        margin: 0 auto;
+
+        .selected-item {
+          padding: 5px 10px;
+          border: 1px solid #09c;
+          border-radius: 5px 5px 5px 5px;
+        }
+
+        .dropdown {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          max-height: 200px;
+          overflow-y: auto;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          border-radius: 0 0 5px 5px;
+          display: none;
+
+          &.open {
+            display: block;
+            z-index: 1;
+          }
+
+          .dropdown-item {
+            padding: 5px 10px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #09c;
+              transition: 0.3s
+            }
+          }
+        }
+      }
       }
     }
   }

@@ -115,6 +115,9 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
           <p><span>E-Mail: </span>{{ selectedLangText['footer']['e-mail'] }}</p>
         </div>
         <div class="item-contact">
+          <p><span>Fax: </span>{{ selectedLangText['footer']['e-mail'] }}</p>
+        </div>
+        <div class="item-contact">
           <p><span>Web: </span>{{ selectedLangText['footer']['website_link'] }}</p>
         </div>
       </div>

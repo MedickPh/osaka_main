@@ -27,8 +27,6 @@ const getText = async () => {
         "Content-Type": "application/json",
       },
     })
-    console.log(response.data);
-    
     return response.data
   } catch (error) {
     console.error(error);
@@ -40,9 +38,7 @@ const getText = async () => {
 const start = async () => {
   try {
     store.setLang()
-    const res = await getText()
-    ;
-    
+    const res = await getText(); 
     store.setAllSiteText(res)
     setText()
     setBrands()

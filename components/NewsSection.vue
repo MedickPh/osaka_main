@@ -57,4 +57,11 @@ const currentLanguage = computed<object>(() => store.currentLanguage);
     align-items: center;
   }
 }
+@media (max-width: 421px) {
+  .top-line-wrapper {
+  .h3 {
+    font-size: 32px;
+  }
+}
+}
 </style>

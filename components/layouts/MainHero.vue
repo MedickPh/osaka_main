@@ -12,14 +12,14 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
         <p>{{ selectedLangText['main_block']['name_company'] }}</p>
       </div>
       <div class="text-content">
-        <h1 class="h1">{{ selectedLangText['main_block']['header']  }}</h1>
-        <p>{{ selectedLangText['main_block']['text']  }}</p>
-        <button class="call-action-btn">{{ selectedLangText['main_block']['button']  }}</button>
+        <h1 class="h1">{{ selectedLangText['main_block']['header'] }}</h1>
+        <p>{{ selectedLangText['main_block']['text'] }}</p>
+        <button class="call-action-btn">{{ selectedLangText['main_block']['button'] }}</button>
       </div>
     </div>
     <div class="icon-down">
       <svg xmlns="http://www.w3.org/2000/svg" width="69" height="35" viewBox="0 0 69 35" fill="none">
-        <path d="M1 1L34.5 34L68 1" stroke="white"/>
+        <path d="M1 1L34.5 34L68 1" stroke="white" />
       </svg>
     </div>
   </div>
@@ -116,6 +116,7 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
     padding-left: 70px;
     width: 40%;
     margin-bottom: 20px;
+    width: 100%;
   }
 }
 
@@ -123,14 +124,25 @@ const selectedLangText = computed<object>(() => store.selectedLangText);
   .text-composition {
     padding-top: 184px;
   }
-  .text-composition .text-content {
-    .h1 {
-      font-size: 32px;
-    }
 
-    p {
-      font-size: 12px;
+  .text-composition {
+    .logo-name {
+      padding-left: 35px;
+    }
+    .text-content {
+      padding-left: 35px;
+      width: 100%;
+
+      .h1 {
+        font-size: 32px;
+        
+      }
+
+      p {
+        font-size: 12px;
+      }
     }
   }
+
 }
 </style>

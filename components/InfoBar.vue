@@ -13,7 +13,7 @@ const updateTime = () => {
   requestAnimationFrame(updateTime);
 };
 onMounted(updateTime);
-console.log(currentLanguage.value);
+
 
 
 </script>
@@ -24,8 +24,8 @@ console.log(currentLanguage.value);
         <span>USD/JPY - 1$ = {{ allSiteText['currency'] }}¥</span>
       </div>
       <div class="current-time-container">
-        <span v-if="currentLanguage=== 'En'">Japan Standard Time {{ japanTime  }}</span>
-        <span v-else>日本時間 {{ japanTime  }}</span>
+        <span v-if="currentLanguage === 'Ja'">日本時間 {{ japanTime  }}</span>
+        <span v-else>Japan Standard Time {{ japanTime  }}</span>
       </div>
     </div>
   </div>

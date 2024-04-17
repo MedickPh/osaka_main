@@ -36,14 +36,6 @@ export const dataWiki = ref({
                 title: "",
                 text: ""
             },
-            rulesnegotiation: {
-                title: "",
-                text: ""
-            },
-            ourprocess: {
-                title: "",
-                text: ""
-            }, 
         }
     },
     importregulationsbycountry: {
@@ -70,14 +62,6 @@ export const dataWiki = ref({
                 title: "",
                 text: ""
             },
-            userreviews: {
-                title: "",
-                text: ""
-            },
-            termsandconditions: {
-                title: "",
-                text: ""
-            },
         }
     },
     faqs: {
@@ -99,10 +83,10 @@ export const dataWiki = ref({
                 title: "",
                 text: ""
             },
-            inquiryform: {
-                title: "",
-                text: ""
-            },
+            // inquiryform: {
+            //     title: "",
+            //     text: ""
+            // },
         }
     },
 
